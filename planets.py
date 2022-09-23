@@ -1,12 +1,70 @@
 from math import radians
 from manimlib import *
 
+MILLION = 1_000_000
 
-class Planets(Scene):
+SUN = {
+    "radius": 696_340,
+    "distance_to_sun": 0,
+    "color": YELLOW_C
+}
+
+MERCURY = {
+    "radius": 2_439.7,
+    "distance_to_sun": 58 * MILLION,
+    "color": GOLD_D
+}
+
+VENUS = {
+    "radius": 6_051.8,
+    "distance_to_sun": 108.2 * MILLION,
+    "color": YELLOW_E
+}
+
+EARTH = {
+    "radius": 6_370,
+    "distance_to_sun": 149 * MILLION,
+    "color": BLUE_C
+}
+
+MARS = {
+    "radius": 3_389.5,
+    "distance_to_sun": 227.9 * MILLION,
+    "color": RED_C
+}
+
+JUPITER = {
+    "radius": 69_911,
+    "distance_to_sun": 778 * MILLION,
+    "color": GOLD_D
+}
+
+SATURN = {
+    "radius": 58_232,
+    "distance_to_sun": 1_434 * MILLION,
+    "color": GOLD_D
+}
+
+URANUS = {
+    "radius": 25_362,
+    "distance_to_sun": 2_871 * MILLION,
+    "color": BLUE_C
+}
+
+
+NEPTUNE = {
+    "radius": 24_622,
+    "distance_to_sun": 4_495 * MILLION,
+    "color": BLUE_A
+}
+
+
+class PlanetsScale(Scene):
     def construct(self):
-        self.camera.frame.set_width(100)
+        self.camera.frame.set_width(50)
+        self.camera.frame.move_to(23.5 * RIGHT)
 
-        plane = NumberPlane()
+        plane = NumberPlane(x_range=[-50, 50])
         self.play(ShowCreation(plane))
         self.wait()
 
@@ -18,7 +76,53 @@ class Planets(Scene):
         jupiter = Dot(color=GOLD_C).move_to([7.8, 0, 0])
         saturn = Dot(color=GOLD_D).move_to([14.3, 0, 0])
         uranus = Dot(color=BLUE_D).move_to([28.8, 0, 0])
-        neptune = Dot(color=BLUE_E).move_to([45, 0, 0])
+        neptune = Dot(color=BLUE_C).move_to([45, 0, 0])
+
+        self.play(ShowCreation(sun))
+        self.play(ShowCreation(mercury))
+        self.play(ShowCreation(venus))
+        self.play(ShowCreation(earth))
+        self.play(ShowCreation(mars))
+        self.play(ShowCreation(jupiter))
+        self.play(ShowCreation(saturn))
+        self.play(ShowCreation(uranus))
+        self.play(ShowCreation(neptune))
+        self.wait()
+
+
+DISTANCE_RADIO = 50 * MILLION
+INCLUDE_REAL_RADIUS = True
+RADIUS_RADIO = MILLION / 10
+
+
+def get_radius(real_radius):
+    if not INCLUDE_REAL_RADIUS:
+        return 0.2
+    return real_radius / RADIUS_RADIO
+
+
+def create_planet(planet):
+    radius = get_radius(planet["radius"])
+    distance_from_sun = planet["distance_to_sun"] / DISTANCE_RADIO
+    if distance_from_sun != 0:
+        distance_from_sun += get_radius(SUN["radius"])
+    return Dot(color=planet["color"], radius=radius).move_to([distance_from_sun, 0, 0])
+
+
+class PlanetsReal(Scene):
+    def construct(self):
+        self.camera.frame.set_width(100)
+        self.camera.frame.move_to(47.5 * RIGHT)
+
+        sun = create_planet(SUN)
+        mercury = create_planet(MERCURY)
+        venus = create_planet(VENUS)
+        earth = create_planet(EARTH)
+        mars = create_planet(MARS)
+        jupiter = create_planet(JUPITER)
+        saturn = create_planet(SATURN)
+        uranus = create_planet(URANUS)
+        neptune = create_planet(NEPTUNE)
 
         self.play(ShowCreation(sun))
         self.play(ShowCreation(mercury))
