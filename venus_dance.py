@@ -2,6 +2,9 @@ from math import radians
 from manimlib import *
 
 
+SCALE = 1
+
+
 class VenusDance(Scene):
     def construct(self):
         plane = NumberPlane()
@@ -9,8 +12,8 @@ class VenusDance(Scene):
         self.wait()
 
         sun = Dot(color=YELLOW).move_to([0, 0, 0])
-        earth = Dot(color=BLUE).move_to([1.5, 0, 0])
-        venus = Dot(color=YELLOW_E).move_to([1, 0, 0])
+        venus = Dot(color=YELLOW_E).move_to([1 * SCALE, 0, 0])
+        earth = Dot(color=BLUE).move_to([1.5 * SCALE, 0, 0])
 
         self.play(ShowCreation(sun))
         self.play(ShowCreation(venus))
