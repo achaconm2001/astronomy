@@ -67,6 +67,18 @@ NEPTUNE = {
     "year_duration": 60_190
 }
 
+PLANETS = {
+    "sun": SUN,
+    "mercury": MERCURY,
+    "venus": VENUS,
+    "earth": EARTH,
+    "mars": MARS,
+    "jupiter": JUPITER,
+    "saturn": SATURN,
+    "uranus": URANUS,
+    "neptune": NEPTUNE
+}
+
 
 class PlanetsScale(Scene):
     def construct(self):
