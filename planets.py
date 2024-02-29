@@ -1,61 +1,70 @@
 from math import radians
-from manimlib import *
+from manim import *
 
 MILLION = 1_000_000
 
 SUN = {
     "radius": 696_340,
     "distance_to_sun": 0,
-    "color": YELLOW_C
+    "color": YELLOW_C,
+    "year_duration": 0
 }
 
 MERCURY = {
     "radius": 2_439.7,
     "distance_to_sun": 58 * MILLION,
-    "color": GOLD_D
+    "color": GOLD_D,
+    "year_duration": 88
 }
 
 VENUS = {
     "radius": 6_051.8,
     "distance_to_sun": 108.2 * MILLION,
-    "color": YELLOW_E
+    "color": YELLOW_E,
+    "year_duration": 225
 }
 
 EARTH = {
     "radius": 6_370,
     "distance_to_sun": 149 * MILLION,
-    "color": BLUE_C
+    "color": BLUE_C,
+    "year_duration": 365
 }
 
 MARS = {
     "radius": 3_389.5,
     "distance_to_sun": 227.9 * MILLION,
-    "color": RED_C
+    "color": RED_C,
+    "year_duration": 687
 }
 
 JUPITER = {
     "radius": 69_911,
     "distance_to_sun": 778 * MILLION,
-    "color": GOLD_D
+    "color": GOLD_D,
+    "year_duration": 4_333
 }
 
 SATURN = {
     "radius": 58_232,
     "distance_to_sun": 1_434 * MILLION,
-    "color": GOLD_D
+    "color": GOLD_D,
+    "year_duration": 10_756
 }
 
 URANUS = {
     "radius": 25_362,
     "distance_to_sun": 2_871 * MILLION,
-    "color": BLUE_C
+    "color": BLUE_C,
+    "year_duration": 30_687
 }
 
 
 NEPTUNE = {
     "radius": 24_622,
     "distance_to_sun": 4_495 * MILLION,
-    "color": BLUE_A
+    "color": BLUE_A,
+    "year_duration": 60_190
 }
 
 
@@ -65,7 +74,7 @@ class PlanetsScale(Scene):
         self.camera.frame.move_to(23.5 * RIGHT)
 
         plane = NumberPlane(x_range=[-50, 50])
-        self.play(ShowCreation(plane))
+        self.play(Create(plane))
         self.wait()
 
         sun = Dot(color=YELLOW_C).move_to([0, 0, 0])
@@ -78,15 +87,15 @@ class PlanetsScale(Scene):
         uranus = Dot(color=BLUE_D).move_to([28.8, 0, 0])
         neptune = Dot(color=BLUE_C).move_to([45, 0, 0])
 
-        self.play(ShowCreation(sun))
-        self.play(ShowCreation(mercury))
-        self.play(ShowCreation(venus))
-        self.play(ShowCreation(earth))
-        self.play(ShowCreation(mars))
-        self.play(ShowCreation(jupiter))
-        self.play(ShowCreation(saturn))
-        self.play(ShowCreation(uranus))
-        self.play(ShowCreation(neptune))
+        self.play(Create(sun))
+        self.play(Create(mercury))
+        self.play(Create(venus))
+        self.play(Create(earth))
+        self.play(Create(mars))
+        self.play(Create(jupiter))
+        self.play(Create(saturn))
+        self.play(Create(uranus))
+        self.play(Create(neptune))
         self.wait()
 
 
@@ -124,13 +133,13 @@ class PlanetsReal(Scene):
         uranus = create_planet(URANUS)
         neptune = create_planet(NEPTUNE)
 
-        self.play(ShowCreation(sun))
-        self.play(ShowCreation(mercury))
-        self.play(ShowCreation(venus))
-        self.play(ShowCreation(earth))
-        self.play(ShowCreation(mars))
-        self.play(ShowCreation(jupiter))
-        self.play(ShowCreation(saturn))
-        self.play(ShowCreation(uranus))
-        self.play(ShowCreation(neptune))
+        self.play(Create(sun))
+        self.play(Create(mercury))
+        self.play(Create(venus))
+        self.play(Create(earth))
+        self.play(Create(mars))
+        self.play(Create(jupiter))
+        self.play(Create(saturn))
+        self.play(Create(uranus))
+        self.play(Create(neptune))
         self.wait()
