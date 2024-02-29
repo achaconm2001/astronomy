@@ -1,3 +1,6 @@
 https://docs.manim.community/en/stable/installation.html
 
-manim -pql venus_dance.py VenusDance
+Run: manim -pql full.py PlanetDance
+Run High Res: manim -pql full.py PlanetDance -r 1920,1080
+
+Video: https://www.youtube.com/watch?v=mWt_6m5gKu8

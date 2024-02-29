@@ -1,22 +1,88 @@
 from manim import *
-from planets import PLANETS
+
+MILLION = 1_000_000
+
+SUN = {
+    "radius": 696_340,
+    "distance_to_sun": 0,
+    "color": YELLOW_C,
+    "year_duration": 0
+}
+
+MERCURY = {
+    "radius": 2_439.7,
+    "distance_to_sun": 58 * MILLION,
+    "color": GOLD_D,
+    "year_duration": 88
+}
+
+VENUS = {
+    "radius": 6_051.8,
+    "distance_to_sun": 108.2 * MILLION,
+    "color": YELLOW_E,
+    "year_duration": 225
+}
+
+EARTH = {
+    "radius": 6_370,
+    "distance_to_sun": 149 * MILLION,
+    "color": BLUE_C,
+    "year_duration": 365
+}
+
+MARS = {
+    "radius": 3_389.5,
+    "distance_to_sun": 227.9 * MILLION,
+    "color": RED_C,
+    "year_duration": 687
+}
+
+JUPITER = {
+    "radius": 69_911,
+    "distance_to_sun": 778 * MILLION,
+    "color": GOLD_D,
+    "year_duration": 4_333
+}
+
+SATURN = {
+    "radius": 58_232,
+    "distance_to_sun": 1_434 * MILLION,
+    "color": GOLD_D,
+    "year_duration": 10_756
+}
+
+URANUS = {
+    "radius": 25_362,
+    "distance_to_sun": 2_871 * MILLION,
+    "color": BLUE_C,
+    "year_duration": 30_687
+}
+
+
+NEPTUNE = {
+    "radius": 24_622,
+    "distance_to_sun": 4_495 * MILLION,
+    "color": BLUE_A,
+    "year_duration": 60_190
+}
+
+PLANETS = {
+    "sun": SUN,
+    "mercury": MERCURY,
+    "venus": VENUS,
+    "earth": EARTH,
+    "mars": MARS,
+    "jupiter": JUPITER,
+    "saturn": SATURN,
+    "uranus": URANUS,
+    "neptune": NEPTUNE
+}
 
 SCALE = 2
 TOTAL_DURATION = 60
 
 PLANET_1 = PLANETS["venus"]
 PLANET_2 = PLANETS["earth"]
-
-def reduce_to_smaller_digits(num1, num2):
-    def gcd(a, b):
-        while b:
-            a, b = b, a % b
-        return a
-
-    divisor = gcd(num1, num2)
-    reduced_num1 = num1 // divisor
-    reduced_num2 = num2 // divisor
-    return reduced_num1, reduced_num2
 
 
 class PlanetDance(Scene):
